@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t anishsinha1/complex -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true anishsinha1/complex yarn test --coverage
+
+after_success:
+  - docker build -t anishsinha1/complex-client
+  - docker build -t anishsinha1/complex-server
+  - docker build -t anishsinha1/complex-worker
+  - docker build -t anishsinha1/complex-nginx
