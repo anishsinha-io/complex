@@ -8,7 +8,12 @@ script:
   - docker run -e CI=true anishsinha1/complex yarn test --coverage
 
 after_success:
-  - docker build -t anishsinha1/complex-client
-  - docker build -t anishsinha1/complex-server
-  - docker build -t anishsinha1/complex-worker
-  - docker build -t anishsinha1/complex-nginx
+  - docker build -t anishsinha1/complex-client ./client
+  - docker build -t anishsinha1/complex-server ./server
+  - docker build -t anishsinha1/complex-worker ./worker
+  - docker build -t anishsinha1/complex-nginx ./nginx
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push anishsinha1/complex-client
+  - docker push anishsinha1/complex-server
+  - docker push anishsinha1/complex-worker
+  - docker push anishsinha1/complex-nginx
