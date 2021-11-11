@@ -21,8 +21,8 @@ services:
     mem_limit: 128m
     hostname: worker
     environment:
-      - REDIS_HOST=$REDIS_HOST
-      - REDIS_PORT=$REDIS_PORT
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
   nginx:
     image: "anishsinha1/complex-nginx"
     mem_limit: 128m
