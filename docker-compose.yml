@@ -8,7 +8,7 @@ services:
     image: "cygnetops/multi-server-10-14"
     mem_limit: 128m
     hostname: api
-    environment:{
+    environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
       - PGUSER=${PG_HOST}
